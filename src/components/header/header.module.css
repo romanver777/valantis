@@ -1,0 +1,15 @@
+.Header {
+  background-color: #512689;
+}
+.Header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+}
+.Header__title {
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+}
