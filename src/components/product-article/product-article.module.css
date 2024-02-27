@@ -1,0 +1,27 @@
+.ProductArticle {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.ProductArticle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.ProductArticle__id {
+  font-size: 12px;
+}
+.ProductArticle__brand {
+  margin-bottom: -10px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.ProductArticle__link {
+  font-weight: bold;
+}
+.ProductArticle__price {
+  font-size: 16px;
+}
