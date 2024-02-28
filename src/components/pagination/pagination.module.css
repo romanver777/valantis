@@ -1,0 +1,46 @@
+.Pagination {
+  padding: 0 30px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.Pagination__page {
+  padding: 6px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0.9960451126098633px 3.984180450439453px 0px #33333326;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: background-color 0.5s;
+}
+
+.Pagination__page_active {
+  background-color: #512689;
+  color: #fff;
+}
+
+@media (hover: hover) {
+  .Pagination__page:hover {
+    background-color: #efefef;
+  }
+
+  .Pagination__page_active:hover {
+    background-color: #512689;
+    color: #fff;
+  }
+}
+
+@media (hover: none) {
+  .Pagination__page:hover {
+    background-color: transparent;
+  }
+
+  .Pagination__page_active:hover {
+    background-color: #512689;
+    color: #fff;
+  }
+}
