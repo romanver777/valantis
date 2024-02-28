@@ -10,6 +10,10 @@ export const productApi = api.injectEndpoints({
           params: { ids: [id] },
         },
       }),
+      providesTags: (res, err, arg) => {
+        const itemId = res.result[0].id;
+        return res ? [{ type: "Product", itemId }, "Product"] : ["Product"];
+      },
     }),
   }),
 });
