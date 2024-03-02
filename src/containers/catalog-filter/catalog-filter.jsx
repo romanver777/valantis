@@ -58,6 +58,7 @@ function CatalogFilter() {
         value={search}
         onChange={callbacks.onSearch}
         placeholder={"Поиск"}
+        onEnterClick={callbacks.onClickSearch}
       />
       <button onClick={callbacks.onClickSearch}>Поиск</button>
       <button onClick={callbacks.onReset}>Сбросить фильтр</button>
