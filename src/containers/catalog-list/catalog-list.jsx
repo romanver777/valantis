@@ -8,6 +8,7 @@ import {
 } from "../../store/catalog";
 import { setPage } from "../../store/catalog-filter";
 import getUniqueItems from "../../utils/getUniqueItems/getUniqueItems";
+import getUrlParams from "../../utils/getUrlParams/getUrlParams";
 import Loader from "../../components/loader/loader";
 import List from "../../components/list/list";
 import ProductItem from "../../components/product-item/product-item";
@@ -64,6 +65,15 @@ function CatalogList() {
 
   const callbacks = {
     onPaginate: useCallback((page) => dispatch(setPage(page)), [dispatch]),
+    getPaginationLink: useCallback((number) => {
+      const { search } = getUrlParams();
+      let params = {};
+
+      if (search.select) params[`${search.select}`] = search.search;
+      params.page = number;
+
+      return `?${new URLSearchParams(params)}`;
+    }, []),
   };
 
   const renders = {
@@ -96,6 +106,7 @@ function CatalogList() {
             limit={limit}
             length={params?.action === "get_ids" ? all?.result.length : length}
             onChange={callbacks.onPaginate}
+            makeLink={callbacks.getPaginationLink}
           />
         </>
       )}

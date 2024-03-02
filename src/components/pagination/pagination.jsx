@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import style from "./pagination.module.css";
 
-function Pagination({ active, limit, length, onChange }) {
+function Pagination({ active, limit, length, onChange, makeLink }) {
   if (length <= limit) return null;
 
   const max = Math.ceil(length / limit);
@@ -31,7 +31,7 @@ function Pagination({ active, limit, length, onChange }) {
         return number ? (
           number !== active ? (
             <Link
-              to={`?page=${number}`}
+              to={makeLink(number)}
               key={ind}
               className={style.Pagination__page}
               onClick={onClickHandler(number)}
