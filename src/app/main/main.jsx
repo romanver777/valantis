@@ -1,71 +1,32 @@
-import { useCallback } from "react";
-import { useLocation } from "react-router";
-import {
-  useLoadAllQuery,
-  useLoadProductsQuery,
-  useLoadProductsByIdsQuery,
-} from "../../store/catalog";
-import getUniqueItems from "../../utils/getUniqueItems/getUniqueItems";
+import { useCallback, useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { initParams, resetFilter } from "../../store/catalog-filter";
 import PageLayout from "../../components/page-layout/page-layout";
 import Header from "../../components/header/header";
-import Loader from "../../components/loader/loader";
-import List from "../../components/list/list";
-import ProductItem from "../../components/product-item/product-item";
-import Pagination from "../../components/pagination/pagination";
+import CatalogFilter from "../../containers/catalog-filter/catalog-filter";
+import CatalogList from "../../containers/catalog-list/catalog-list";
 
 function Main() {
-  const { search } = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const getPage = (search) => {
-    const urlParams = new URLSearchParams(search);
+  useEffect(() => {
+    dispatch(initParams());
+  }, [dispatch]);
 
-    return urlParams.has("page") ? Number(urlParams.get("page")) : 1;
+  const callbacks = {
+    onHome: useCallback(() => {
+      dispatch(resetFilter());
+      navigate("/");
+    }, [dispatch, navigate]),
   };
-
-  const { data: all } = useLoadAllQuery();
-
-  const {
-    data: ids,
-    isLoading: isLoadingIds,
-    isFetching,
-  } = useLoadProductsQuery(getPage(search));
-  const {
-    data: items,
-    isLoading: isLoadingProducts,
-    isFetching: isFetchingItems,
-  } = useLoadProductsByIdsQuery(ids?.result, {
-    skip: !ids,
-  });
-
-  const renders = {
-    item: useCallback(
-      (item) => (
-        <ProductItem key={item.id} item={item} link={`/products/${item.id}`} />
-      ),
-      []
-    ),
-  };
-
-  if (isLoadingIds || isLoadingProducts) return <Loader />;
 
   return (
     <PageLayout>
-      <Header />
-      {isFetching || isFetchingItems ? (
-        <Loader />
-      ) : (
-        <>
-          <List
-            items={getUniqueItems(items.result)}
-            renderItem={renders.item}
-          />
-          <Pagination
-            active={getPage(search)}
-            limit={50}
-            length={all.result.length}
-          />
-        </>
-      )}
+      <Header onHomeClick={callbacks.onHome} />
+      <CatalogFilter />
+      <CatalogList />
     </PageLayout>
   );
 }

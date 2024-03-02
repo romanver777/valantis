@@ -12,13 +12,9 @@ export const catalogApi = api.injectEndpoints({
       }),
     }),
     loadProducts: builder.query({
-      query: (page) => ({
-        url: `?page=${page}`,
+      query: (params) => ({
         method: "POST",
-        body: {
-          action: "get_ids",
-          params: { offset: (page - 1) * 50, limit: 50 },
-        },
+        body: params,
       }),
     }),
     loadProductsByIds: builder.query({
