@@ -1,5 +1,31 @@
-.Select {
-}
-.Select__option{
+.Select__item {
+  min-width: 160px;
+  box-shadow: 0px 0.9960451126098633px 3.984180450439453px 0px #33333326;
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: none;
+  color: #404040;
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,<svg height='12px' width='16px' viewBox='0 0 16 16' fill='%23707070' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+  background-repeat: no-repeat;
+  color: #404040;
+  background-position: calc(100% - 10px) 8px;
+  outline: none;
+}
+.Select__item:focus,
+.Select__item:active {
+  border: none;
+  outline: none;
+}
+.Select__option {
+  cursor: pointer;
+  color: #404040;
+}
+
+@media (max-width: 640px) {
+  .Select,
+  .Select__item {
+    width: 100%;
+  }
 }

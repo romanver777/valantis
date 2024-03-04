@@ -8,8 +8,10 @@ import {
   resetFilter,
 } from "../../store/catalog-filter";
 import SideLayout from "../../components/side-layout/side-layout";
+import Filters from "../../components/filters/filters";
 import Select from "../../components/select/select";
 import Input from "../../components/input/input";
+import FilterButtons from "../../components/filter-buttons/filter-buttons";
 
 function CatalogFilter() {
   const navigate = useNavigate();
@@ -48,20 +50,24 @@ function CatalogFilter() {
 
   return (
     <SideLayout side="start">
-      <Select
-        options={options.params}
-        value={select}
-        onChange={callbacks.onSelect}
-      />
-      <Input
-        type="text"
-        value={search}
-        onChange={callbacks.onSearch}
-        placeholder={"Поиск"}
-        onEnterClick={callbacks.onClickSearch}
-      />
-      <button onClick={callbacks.onClickSearch}>Поиск</button>
-      <button onClick={callbacks.onReset}>Сбросить фильтр</button>
+      <Filters>
+        <Select
+          options={options.params}
+          value={select}
+          onChange={callbacks.onSelect}
+        />
+        <Input
+          type="text"
+          value={search}
+          onChange={callbacks.onSearch}
+          placeholder={"Поиск"}
+          onEnterClick={callbacks.onClickSearch}
+        />
+        <FilterButtons
+          onSearch={callbacks.onClickSearch}
+          onResetFilters={callbacks.onReset}
+        />
+      </Filters>
     </SideLayout>
   );
 }

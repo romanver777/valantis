@@ -1,0 +1,31 @@
+.FilterButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.FilterButtons__item {
+  box-shadow: 0px 0.9960451126098633px 3.984180450439453px 0px #33333326;
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: none;
+  color: #404040;
+  cursor: pointer;
+  transition: 0.5s;
+}
+@media (hover: hover) {
+  .FilterButtons__item:hover {
+    background-color: transparent;
+  }
+}
+
+@media (hover: none) {
+  .FilterButtons__item {
+    background-color: #efefef;
+  }
+}
+@media (max-width: 640px) {
+  .FilterButtons {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

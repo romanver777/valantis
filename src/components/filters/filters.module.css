@@ -1,0 +1,24 @@
+.Filters{
+    padding: 30px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.Filters .btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.Filters button{
+    display: flex;
+}
+
+@media (max-width: 640px){
+    .Filters{
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

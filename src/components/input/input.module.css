@@ -1,0 +1,15 @@
+.Input {
+  box-shadow: 0px 0.9960451126098633px 3.984180450439453px 0px #33333326;
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: none;
+  color: #404040;
+}
+.Input:focus {
+  outline: none;
+}
+@media (max-width: 640px) {
+  .Input {
+    width: 100%;
+  }
+}

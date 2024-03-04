@@ -87,9 +87,9 @@ function CatalogList() {
 
   if (isLoadingAll || isLoadingIds || isLoadingProducts) return <Loader />;
   if (errorAll || errorIds || errorProducts)
-    return <SideLayout side="center">Что-то пошло не так</SideLayout>;
+    return <SideLayout side="center" pt="big">Что-то пошло не так</SideLayout>;
   if (!ids?.result.length)
-    return <SideLayout side="center">Данные не найдены</SideLayout>;
+    return <SideLayout side="center" pt="big">Данные не найдены</SideLayout>;
 
   return (
     <>

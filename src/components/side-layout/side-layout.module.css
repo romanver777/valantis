@@ -1,10 +1,9 @@
 .SideLayout {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 30px 0;
+  padding: 0 30px;
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 .SideLayout__side_start {
   justify-content: flex-start;
@@ -12,4 +11,7 @@
 .SideLayout__side_center {
   justify-content: center;
   text-align: center;
+}
+.SideLayout__pt_big{
+  padding-top: 30px;
 }
