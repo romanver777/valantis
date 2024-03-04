@@ -3,7 +3,7 @@ import md5 from "md5";
 import formatDate from "../utils/formatDate/formatDate";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://api.valantis.store:40000/",
+  baseUrl: "https://api.valantis.store:41000/",
   prepareHeaders: (headers) => {
     headers.set("X-Auth", md5(`Valantis_${formatDate()}`));
   },
